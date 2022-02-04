@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Hello world Server
+  version: 0.1.9
+servers:
+  - url: 'http://localhost:8000/v1'
+    description: Server local
+paths:
+  /hello-world:
+    post:
+      summary: Send Hello + name answer
+      operationId: helloworld
+      requestBody:
+        required: true
+        x-name: data
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Name to be printed
+      responses:
+        '200':
+          description: Hello response
+        '405':
+          description: invalid object
+        default:
+          description: unexpected error
